@@ -32,7 +32,7 @@ int main() {
         "Hans",
         "Dalishain",
         "Houtman",
-        "Momo"
+        "Momo",
     };
 
     auto available = KnowledgeBase::select(availableNames);
