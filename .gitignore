@@ -1,0 +1,7 @@
+.vs/
+*.slnx
+*.vcxproj
+*.filters
+*.user
+Amity/x64/
+x64/
