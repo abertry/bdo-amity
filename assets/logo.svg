@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">Black Desert Online Amity Solver logo</title>
+  <desc id="desc">A hexagonal graph with a highlighted optimal path ending at a target node.</desc>
+
+  <!-- Transparent background -->
+
+  <!-- Outer hexagon -->
+  <path
+    d="M256 36 L438 141 L438 371 L256 476 L74 371 L74 141 Z"
+    fill="none"
+    stroke="#D4AF37"
+    stroke-width="20"
+    stroke-linejoin="round"
+  />
+
+  <!-- Inactive graph edges -->
+  <g
+    fill="none"
+    stroke="#9CA3AF"
+    stroke-width="14"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.9"
+  >
+    <path d="M142 224 L220 142 L326 170 L382 260" />
+    <path d="M142 224 L202 304 L300 356 L382 260" />
+    <path d="M220 142 L202 304" />
+    <path d="M326 170 L300 356" />
+    <path d="M202 304 L326 170" />
+  </g>
+
+  <!-- Highlighted optimal path -->
+  <path
+    d="M142 224 L202 304 L300 356 L382 260"
+    fill="none"
+    stroke="#D4AF37"
+    stroke-width="22"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Regular nodes -->
+  <g stroke-width="14">
+    <circle cx="142" cy="224" r="25" fill="#111827" stroke="#D1D5DB" />
+    <circle cx="220" cy="142" r="25" fill="#111827" stroke="#D1D5DB" />
+    <circle cx="326" cy="170" r="25" fill="#111827" stroke="#D1D5DB" />
+    <circle cx="202" cy="304" r="25" fill="#111827" stroke="#D4AF37" />
+    <circle cx="300" cy="356" r="25" fill="#111827" stroke="#D4AF37" />
+  </g>
+
+  <!-- Goal node -->
+  <circle cx="382" cy="260" r="34" fill="#111827" stroke="#D4AF37" stroke-width="16" />
+  <circle cx="382" cy="260" r="15" fill="#D4AF37" />
+</svg>

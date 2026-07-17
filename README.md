@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Black Desert Online Amity Solver">
+  <img src="assets/banner.png" alt="Black Desert Online Amity Solver">
 </p>
 
 # Black Desert Online Amity Solver
