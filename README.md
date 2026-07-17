@@ -1,57 +1,35 @@
 <p align="center">
-  <img src="assets/logo.png" alt="BDO Amity Solver logo" width="512">
+  <img src="assets/logo.png" alt="Black Desert Online Amity Solver">
 </p>
 
-# BDO Amity Solver
+# Black Desert Online Amity Solver
 
-A C++17 solver for Black Desert Online's Amity conversation minigame.
+Small C++17 solver for Black Desert Online's Amity conversation minigame. Selects and orders knowledge to maximize goal success probability, then expected favor.
 
-Given an NPC, a conversation goal, and the knowledge available to the player,
-the solver selects and orders knowledge to maximize the chance of completing
-the goal. Expected favor is used to choose between equally successful orders.
+[![Build and unit tests](https://github.com/abertry/bdo-amity/actions/workflows/cmake.yml/badge.svg)](https://github.com/abertry/bdo-amity/actions/workflows/cmake.yml)
+![Unit test coverage](https://img.shields.io/badge/unit_test_coverage-76%25-yellowgreen)
+![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
+![CMake](https://img.shields.io/badge/CMake-%3E%3D3.16-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-## Features
+Supports spark, failure, favor, and free-talk goals. Combo effects are not yet supported.
 
-- Supports spark, failure, consecutive, favor, and free-talk goals
-- Selects and orders knowledge for the NPC's available conversation slots
-- Calculates goal probability and expected accumulated favor
-- Loads knowledge entries from `data/knowledge.json`
-- Includes deterministic unit tests
-
-Combo effects are not supported yet.
-
-## Usage
+## Build and test
 
 ```bash
-./build/amity_solver \
-  --interest 30 \
-  --favor 15 \
-  --slots 8 \
-  --category "Residents of Velia" \
-  --goal consecutive-spark \
-  --target 3
-```
-
-List available knowledge categories:
-
-```bash
-./build/amity_solver --list-categories
-```
-
-Run `./build/amity_solver --help` for all goal names and options.
-
-## Build and Test
-
-```bash
-cmake -S . -B build
+cmake -S . -B build -DBUILD_TESTING=ON
 cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-On multi-configuration generators such as Visual Studio, add
-`--config Debug` or `--config Release` to the build and test commands.
+## Usage
 
-## Disclaimer
+```bash
+./build/amity_solver --interest 30 --favor 15 --slots 8 \
+  --category "Residents of Velia" --goal consecutive-spark --target 3
+```
 
-This project is not affiliated with Pearl Abyss. Black Desert Online is a
-trademark of Pearl Abyss Corp.
+Use `--help` for all options or `--list-categories` for available knowledge.
+
+Not affiliated with Pearl Abyss Corp. Black Desert Online is a trademark of Pearl Abyss Corp.
