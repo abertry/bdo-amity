@@ -1,7 +1,7 @@
 #pragma once
 
 struct Npc {
-    double interest;
+    int interest;
     int favor;
     int slots;
 };

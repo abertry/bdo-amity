@@ -126,9 +126,9 @@ namespace {
 
     struct TurnModifiers {
         int npcFavor = 0;
-        double npcInterest = 0.0;
+        int npcInterest = 0;
         int topicFavor = 0;
-        double topicInterest = 0.0;
+        int topicInterest = 0;
     };
 
     TurnModifiers modifiersForTurn(
@@ -155,12 +155,12 @@ namespace {
     }
 
     double sparkChance(const Knowledge& knowledge, const Npc& npc, const TurnModifiers& modifiers) {
-        const double npcInterest = std::max(0.0, npc.interest + modifiers.npcInterest);
-        const double topicInterest = std::max(0.0, knowledge.interest + modifiers.topicInterest);
-        if (npcInterest <= 0.0) {
+        const int npcInterest = std::max(0, npc.interest + modifiers.npcInterest);
+        const int topicInterest = std::max(0, knowledge.interest + modifiers.topicInterest);
+        if (npcInterest <= 0) {
             return 1.0;
         }
-        return std::clamp(topicInterest / npcInterest, 0.0, 1.0);
+        return std::clamp(static_cast<double>(topicInterest) / npcInterest, 0.0, 1.0);
     }
 
     StateDistribution advance(
@@ -365,11 +365,11 @@ namespace {
 }
 
 double AmitySolver::sparkChance(const Knowledge& knowledge, const Npc& npc) {
-    if (npc.interest <= 0.0) {
+    if (npc.interest <= 0) {
         return 1.0;
     }
 
-    return std::clamp(knowledge.interest / npc.interest, 0.0, 1.0);
+    return std::clamp(static_cast<double>(knowledge.interest) / npc.interest, 0.0, 1.0);
 }
 
 double AmitySolver::expectedFavorGain(const Knowledge& knowledge, const Npc& npc) {

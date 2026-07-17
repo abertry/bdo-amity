@@ -51,16 +51,6 @@ int parseInteger(const std::string& value, const std::string& flag) {
     return result;
 }
 
-double parseNumber(const std::string& value, const std::string& flag) {
-    std::size_t consumed = 0;
-    double result = 0.0;
-    try { result = std::stod(value, &consumed); }
-    catch (const std::exception&) { throw std::invalid_argument(flag + " requires a number"); }
-    if (consumed != value.size()) {
-        throw std::invalid_argument(flag + " requires a number");
-    }
-    return result;
-}
 }
 
 CommandLineOptions parseCommandLine(int argc, const char* const argv[]) {
@@ -77,7 +67,7 @@ CommandLineOptions parseCommandLine(int argc, const char* const argv[]) {
         if (flag == "--help" || flag == "-h") options.showHelp = true;
         else if (flag == "--list-categories") options.listCategories = true;
         else if (flag == "--interest") {
-            options.npc.interest = parseNumber(requireValue(index, argc, argv), flag);
+            options.npc.interest = parseInteger(requireValue(index, argc, argv), flag);
             hasInterest = true;
         } else if (flag == "--favor") {
             options.npc.favor = parseInteger(requireValue(index, argc, argv), flag);
@@ -105,7 +95,7 @@ CommandLineOptions parseCommandLine(int argc, const char* const argv[]) {
             "required options: --interest --favor --slots --category --goal --target"
         );
     }
-    if (options.npc.interest < 0.0 || options.npc.favor < 0 || options.npc.slots <= 0
+    if (options.npc.interest < 0 || options.npc.favor < 0 || options.npc.slots <= 0
         || options.goal.target < 0) {
         throw std::invalid_argument("interest, favor, and target must be non-negative; slots must be positive");
     }
