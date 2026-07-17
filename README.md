@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="BDO Amity Solver logo" width="512">
+</p>
+
 # BDO Amity Solver
 
 A C++17 solver for Black Desert Online's Amity conversation minigame.
