@@ -21,37 +21,44 @@
     fill="none"
     stroke="#9CA3AF"
     stroke-width="14"
-    stroke-linecap="round"
+    stroke-linecap="butt"
     stroke-linejoin="round"
     opacity="0.9"
   >
-    <path d="M142 224 L220 142 L326 170 L382 260" />
-    <path d="M142 224 L202 304 L300 356 L382 260" />
-    <path d="M220 142 L202 304" />
-    <path d="M326 170 L300 356" />
-    <path d="M202 304 L326 170" />
+    <path d="M159.23 205.89 L202.77 160.11" />
+    <path d="M244.17 148.38 L301.83 163.62" />
+    <path d="M339.21 191.23 L364.04 231.13" />
+    <path d="M157.00 244.00 L187.00 284.00" />
+    <path d="M224.08 315.72 L277.92 344.28" />
+    <path d="M316.24 336.99 L359.92 285.85" />
+    <path d="M217.24 166.85 L204.76 279.15" />
+    <path d="M322.54 194.76 L303.46 331.24" />
+    <path d="M218.98 285.65 L309.02 188.35" />
   </g>
 
   <!-- Highlighted optimal path -->
-  <path
-    d="M142 224 L202 304 L300 356 L382 260"
+  <g
     fill="none"
     stroke="#D4AF37"
     stroke-width="22"
-    stroke-linecap="round"
+    stroke-linecap="butt"
     stroke-linejoin="round"
-  />
+  >
+    <path d="M157.00 244.00 L187.00 284.00" />
+    <path d="M224.08 315.72 L277.92 344.28" />
+    <path d="M316.24 336.99 L359.92 285.85" />
+  </g>
 
   <!-- Regular nodes -->
   <g stroke-width="14">
-    <circle cx="142" cy="224" r="25" fill="#111827" stroke="#D1D5DB" />
-    <circle cx="220" cy="142" r="25" fill="#111827" stroke="#D1D5DB" />
-    <circle cx="326" cy="170" r="25" fill="#111827" stroke="#D1D5DB" />
-    <circle cx="202" cy="304" r="25" fill="#111827" stroke="#D4AF37" />
-    <circle cx="300" cy="356" r="25" fill="#111827" stroke="#D4AF37" />
+    <circle cx="142" cy="224" r="25" fill="none" stroke="#D4AF37" />
+    <circle cx="220" cy="142" r="25" fill="none" stroke="#D1D5DB" />
+    <circle cx="326" cy="170" r="25" fill="none" stroke="#D1D5DB" />
+    <circle cx="202" cy="304" r="25" fill="none" stroke="#D4AF37" />
+    <circle cx="300" cy="356" r="25" fill="none" stroke="#D4AF37" />
   </g>
 
   <!-- Goal node -->
-  <circle cx="382" cy="260" r="34" fill="#111827" stroke="#D4AF37" stroke-width="16" />
+  <circle cx="382" cy="260" r="34" fill="none" stroke="#D4AF37" stroke-width="16" />
   <circle cx="382" cy="260" r="15" fill="#D4AF37" />
 </svg>
