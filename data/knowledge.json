@@ -1,0 +1,32 @@
+{
+  "People of Eastern Valencia": [
+    {"name":"Graule","interest":4,"favorMin":45,"favorMax":57},
+    {"name":"Luicy","interest":3,"favorMin":40,"favorMax":53},
+    {"name":"Buta","interest":34,"favorMin":37,"favorMax":41},
+    {"name":"Yasum","interest":17,"favorMin":45,"favorMax":47},
+    {"name":"Ami","interest":44,"favorMin":5,"favorMax":7},
+    {"name":"Dudora Doriven","interest":20,"favorMin":45,"favorMax":49},
+    {"name":"Roroju","interest":2,"favorMin":44,"favorMax":46},
+    {"name":"Sankamu","interest":43,"favorMin":5,"favorMax":8},
+    {"name":"Larina","interest":7,"favorMin":38,"favorMax":48},
+    {"name":"Rohu","interest":25,"favorMin":24,"favorMax":28},
+    {"name":"Buroma","interest":32,"favorMin":36,"favorMax":42},
+    {"name":"Surondula","interest":25,"favorMin":25,"favorMax":26}
+  ],
+  "Residents of Velia": [
+    {"name":"Islin Bartali","interest":21,"favorMin":33,"favorMax":36},
+    {"name":"Crio","interest":10,"favorMin":31,"favorMax":38},
+    {"name":"David Finto","interest":35,"favorMin":32,"favorMax":39},
+    {"name":"Alustin","interest":25,"favorMin":22,"favorMax":28},
+    {"name":"Igor Bartali","interest":20,"favorMin":45,"favorMax":47},
+    {"name":"Artemio Fiazza","interest":41,"favorMin":5,"favorMax":9},
+    {"name":"Claire Arryn","interest":4,"favorMin":42,"favorMax":53},
+    {"name":"Abelin","interest":33,"favorMin":35,"favorMax":42},
+    {"name":"Mariano","interest":20,"favorMin":34,"favorMax":37},
+    {"name":"Egrin","interest":35,"favorMin":30,"favorMax":40},
+    {"name":"Hans","interest":28,"favorMin":23,"favorMax":26},
+    {"name":"Dalishain","interest":21,"favorMin":34,"favorMax":37},
+    {"name":"Houtman","interest":23,"favorMin":34,"favorMax":39},
+    {"name":"Momo","interest":29,"favorMin":23,"favorMax":30}
+  ]
+}
