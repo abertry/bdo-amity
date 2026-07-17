@@ -7,7 +7,7 @@
 #include <string>
 
 struct CommandLineOptions {
-    Npc npc{"Command Line NPC", 0.0, 0, 0};
+    Npc npc{0.0, 0, 0};
     Goal goal{GoalType::FreeTalk, 0};
     std::string category;
     bool showHelp = false;

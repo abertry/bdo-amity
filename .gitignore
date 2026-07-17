@@ -8,3 +8,4 @@ x64/
 build/
 .agents/
 skills-lock.json
+build-ci/

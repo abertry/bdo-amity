@@ -333,8 +333,7 @@ void AmitySolver::printOrder(
     const Goal& goal,
     const Npc& npc
 ) {
-    std::cout << "NPC: " << npc.name
-        << " | Interest: " << npc.interest
+    std::cout << "NPC Interest: " << npc.interest
         << " | Favor: " << npc.favor
         << " | Slots: " << npc.slots << "\n";
 

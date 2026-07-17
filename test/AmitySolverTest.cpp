@@ -25,7 +25,7 @@ void expectNear(double actual, double expected, const std::string& message) {
 }
 
 void testProbabilityHelpers() {
-    const Npc npc{"NPC", 20.0, 15, 2};
+    const Npc npc{20.0, 15, 2};
     expectNear(AmitySolver::sparkChance({"Low", 10.0, 20, 30, "Test"}, npc), 0.5,
         "spark chance uses knowledge/NPC interest");
     expectNear(AmitySolver::sparkChance({"High", 30.0, 20, 30, "Test"}, npc), 1.0,
@@ -35,7 +35,7 @@ void testProbabilityHelpers() {
 }
 
 void testExactSparkSelection() {
-    const Npc npc{"NPC", 100.0, 0, 1};
+    const Npc npc{100.0, 0, 1};
     const std::vector<Knowledge> available{
         {"Weak", 20.0, 100, 100, "Test"}, {"Reliable", 80.0, 1, 1, "Test"}
     };
@@ -47,7 +47,7 @@ void testExactSparkSelection() {
 }
 
 void testExactFailSelection() {
-    const Npc npc{"NPC", 100.0, 0, 1};
+    const Npc npc{100.0, 0, 1};
     const auto result = AmitySolver::solveExact({
         {"Usually fails", 10.0, 1, 1, "Test"}, {"Usually sparks", 90.0, 50, 50, "Test"}
     }, {GoalType::FailSpark, 1}, npc);
@@ -56,7 +56,7 @@ void testExactFailSelection() {
 }
 
 void testConsecutiveOrderMatters() {
-    const Npc npc{"NPC", 100.0, 0, 3};
+    const Npc npc{100.0, 0, 3};
     const auto result = AmitySolver::solveExact({
         {"Certain A", 100.0, 1, 1, "Test"}, {"Certain B", 100.0, 1, 1, "Test"},
         {"Always fail", 0.0, 100, 100, "Test"}
@@ -67,7 +67,7 @@ void testConsecutiveOrderMatters() {
 }
 
 void testFavorDistribution() {
-    const Npc npc{"NPC", 100.0, 10, 1};
+    const Npc npc{100.0, 10, 1};
     const auto result = AmitySolver::solveExact({{"Range", 100.0, 10, 12, "Test"}},
         {GoalType::AccumulatedFavor, 2}, npc);
     expectNear(result.satisfactionProbability, 1.0 / 3.0,
@@ -76,7 +76,7 @@ void testFavorDistribution() {
 }
 
 void testRewardAndBranchBound() {
-    const Npc npc{"NPC", 100.0, 0, 2};
+    const Npc npc{100.0, 0, 2};
     const auto result = AmitySolver::solveExact({
         {"One", 100.0, 1, 1, "Test"}, {"Ten", 100.0, 10, 10, "Test"},
         {"Five", 100.0, 5, 5, "Test"}
@@ -107,13 +107,13 @@ void testJsonKnowledgeBase() {
 
 void testValidationAndEmptyInput() {
     const auto empty = AmitySolver::solveExact({}, {GoalType::FreeTalk, 0},
-        {"NPC", 1, 0, 0});
+        {1, 0, 0});
     expect(empty.order.empty() && empty.satisfactionProbability == 1.0,
         "empty free-talk conversation is valid");
     bool threw = false;
     try {
         (void)AmitySolver::solveExact({{"Bad", 1, 5, 4, "Test"}},
-            {GoalType::Spark, 1}, {"NPC", 1, 0, 1});
+            {GoalType::Spark, 1}, {1, 0, 1});
     } catch (const std::invalid_argument&) { threw = true; }
     expect(threw, "invalid favor ranges are rejected");
 }

@@ -27,10 +27,8 @@ int main(int argc, const char* argv[]) {
             return 2;
         }
 
-        Npc npc = options.npc;
-        npc.name = options.category;
-        const SolverResult result = AmitySolver::solveExact(available, options.goal, npc);
-        AmitySolver::printOrder(result.order, options.goal, npc);
+        const SolverResult result = AmitySolver::solveExact(available, options.goal, options.npc);
+        AmitySolver::printOrder(result.order, options.goal, options.npc);
         std::cout << "\nGoal probability: " << std::fixed << std::setprecision(2)
             << result.satisfactionProbability * 100.0 << "%\n"
             << "Expected accumulated favor: " << result.expectedAccumulatedFavor << '\n';
