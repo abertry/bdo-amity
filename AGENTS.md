@@ -1,5 +1,11 @@
 # AGENTS.md
 
+## Agent Communication
+
+At start of every agent session, load and use installed `caveman` skill at `full` intensity.
+Keep it active for all responses unless user explicitly requests `stop caveman` or `normal mode`.
+If skill is unavailable, follow its core behavior: communicate tersely while preserving all technical substance.
+
 ## Purpose
 
 You are developing a Black Desert Online (BDO) Amity Conversation Solver written in modern C++.
