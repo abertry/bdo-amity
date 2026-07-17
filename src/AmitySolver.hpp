@@ -11,6 +11,7 @@ struct SolverResult {
     std::vector<Knowledge> order;
     double satisfactionProbability = 0.0;
     double expectedAccumulatedFavor = 0.0;
+    double expectedMaximumFavor = 0.0;
     std::size_t exploredOrders = 0;
     std::size_t prunedBranches = 0;
 };
@@ -20,6 +21,13 @@ public:
     static double sparkChance(const Knowledge& knowledge, const Npc& npc);
 
     static double expectedFavorGain(const Knowledge& knowledge, const Npc& npc);
+
+    // Evaluates one fixed order using full turn state, including timed combo effects.
+    static SolverResult evaluateOrder(
+        const std::vector<Knowledge>& order,
+        const Goal& goal,
+        const Npc& npc
+    );
 
     // Finds the exact best fixed order. Goal satisfaction probability is the
     // primary objective; expected accumulated favor breaks ties.

@@ -13,7 +13,20 @@ Small C++17 solver for Black Desert Online's Amity conversation minigame. Select
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-Supports spark, failure, favor, and free-talk goals. Combo effects are not yet supported.
+Supports spark, failure, Maximum Favor Level, Accumulated Favor Level, and free-talk goals.
+Favor and interest combo effects support delayed activation, finite duration, and overlap.
+
+Observed conversation mechanics modeled by solver:
+
+- Spark chance is topic Interest Level divided by NPC Interest Level, capped at 100%.
+- Successful topics gain at least 1 favor.
+- Maximum Favor Level is running favor total and resets after failed spark.
+- Accumulated Favor Level adds current Maximum Favor Level after each successful topic.
+- Timed combo effects can modify NPC or topic Favor and Interest Level.
+
+Exact formula for community-observed success/failure "momentum" is not known, so solver does
+not invent or apply one. Knowledge database currently contains base topic values; combo metadata
+can be supplied through `Knowledge::comboEffects` as verified data becomes available.
 
 ## Build and test
 
@@ -31,5 +44,20 @@ ctest --test-dir build --output-on-failure
 ```
 
 Use `--help` for all options or `--list-categories` for available knowledge.
+
+## Sources
+
+Official documentation:
+
+- [Black Desert NA/EU Adventurer's Guide: Amity](https://www.naeu.playblackdesert.com/en-US/Wiki?wikiNo=24)
+
+Community guides and recorded observations used to reconstruct formulas:
+
+- [Reddit: Amity and conversations, the math behind it](https://www.reddit.com/r/blackdesertonline/comments/46xbfc/semiguideamity_and_conversations_the_math_behind/)
+- [Black Desert Foundry: Amity & Conversation Guide](https://www.blackdesertfoundry.com/story-exchange-guide/)
+- [Steam Community: Conversation/Amity for dummies](https://steamcommunity.com/sharedfiles/filedetails/?id=2476369608)
+
+Community observations can be incomplete or version-dependent. Solver implements mechanics
+supported by repeatable examples and keeps unresolved behavior documented as unknown.
 
 Not affiliated with Pearl Abyss Corp. Black Desert Online is a trademark of Pearl Abyss Corp.
