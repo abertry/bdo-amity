@@ -4,7 +4,7 @@
 
 struct Knowledge {
     std::string name;
-    double interest;
+    int interest;
     int favorMin;
     int favorMax;
     std::string category;

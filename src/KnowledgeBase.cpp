@@ -21,7 +21,7 @@ std::unordered_map<std::string, Knowledge> KnowledgeBase::load(const std::string
         R"json("([^"]+)"\s*:\s*\[([^\]]*)\])json"
     );
     const std::regex knowledgePattern(
-        R"json(\{\s*"name"\s*:\s*"([^"]+)"\s*,\s*"interest"\s*:\s*(-?[0-9]+(?:\.[0-9]+)?)\s*,\s*"favorMin"\s*:\s*(-?[0-9]+)\s*,\s*"favorMax"\s*:\s*(-?[0-9]+)\s*\})json"
+        R"json(\{\s*"name"\s*:\s*"([^"]+)"\s*,\s*"interest"\s*:\s*(-?[0-9]+)\s*,\s*"favorMin"\s*:\s*(-?[0-9]+)\s*,\s*"favorMax"\s*:\s*(-?[0-9]+)\s*\})json"
     );
     std::unordered_map<std::string, Knowledge> result;
     for (auto categoryIt = std::sregex_iterator(json.begin(), json.end(), categoryPattern);
@@ -30,7 +30,7 @@ std::unordered_map<std::string, Knowledge> KnowledgeBase::load(const std::string
         const std::string entries = (*categoryIt)[2].str();
         for (auto knowledgeIt = std::sregex_iterator(entries.begin(), entries.end(), knowledgePattern);
              knowledgeIt != std::sregex_iterator(); ++knowledgeIt) {
-            Knowledge knowledge{(*knowledgeIt)[1].str(), std::stod((*knowledgeIt)[2].str()),
+            Knowledge knowledge{(*knowledgeIt)[1].str(), std::stoi((*knowledgeIt)[2].str()),
                 std::stoi((*knowledgeIt)[3].str()), std::stoi((*knowledgeIt)[4].str()), category};
             if (knowledge.favorMin > knowledge.favorMax) {
                 throw std::runtime_error("invalid favor range for knowledge: " + knowledge.name);

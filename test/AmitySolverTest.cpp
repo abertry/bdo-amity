@@ -26,18 +26,18 @@ void expectNear(double actual, double expected, const std::string& message) {
 
 void testProbabilityHelpers() {
     const Npc npc{20.0, 15, 2};
-    expectNear(AmitySolver::sparkChance({"Low", 10.0, 20, 30, "Test"}, npc), 0.5,
+    expectNear(AmitySolver::sparkChance({"Low", 10, 20, 30, "Test"}, npc), 0.5,
         "spark chance uses knowledge/NPC interest");
-    expectNear(AmitySolver::sparkChance({"High", 30.0, 20, 30, "Test"}, npc), 1.0,
+    expectNear(AmitySolver::sparkChance({"High", 30, 20, 30, "Test"}, npc), 1.0,
         "spark chance is capped at one");
-    expectNear(AmitySolver::expectedFavorGain({"Favor", 10.0, 20, 30, "Test"}, npc), 10.0,
+    expectNear(AmitySolver::expectedFavorGain({"Favor", 10, 20, 30, "Test"}, npc), 10.0,
         "expected favor uses the range average");
 }
 
 void testExactSparkSelection() {
     const Npc npc{100.0, 0, 1};
     const std::vector<Knowledge> available{
-        {"Weak", 20.0, 100, 100, "Test"}, {"Reliable", 80.0, 1, 1, "Test"}
+        {"Weak", 20, 100, 100, "Test"}, {"Reliable", 80, 1, 1, "Test"}
     };
     const auto result = AmitySolver::solveExact(available, {GoalType::Spark, 1}, npc);
     expect(result.order.size() == 1 && result.order[0].name == "Reliable",
@@ -49,7 +49,7 @@ void testExactSparkSelection() {
 void testExactFailSelection() {
     const Npc npc{100.0, 0, 1};
     const auto result = AmitySolver::solveExact({
-        {"Usually fails", 10.0, 1, 1, "Test"}, {"Usually sparks", 90.0, 50, 50, "Test"}
+        {"Usually fails", 10, 1, 1, "Test"}, {"Usually sparks", 90, 50, 50, "Test"}
     }, {GoalType::FailSpark, 1}, npc);
     expect(result.order[0].name == "Usually fails", "fail goal selects lowest spark chance");
     expectNear(result.satisfactionProbability, 0.9, "fail probability is exact");
@@ -58,8 +58,8 @@ void testExactFailSelection() {
 void testConsecutiveOrderMatters() {
     const Npc npc{100.0, 0, 3};
     const auto result = AmitySolver::solveExact({
-        {"Certain A", 100.0, 1, 1, "Test"}, {"Certain B", 100.0, 1, 1, "Test"},
-        {"Always fail", 0.0, 100, 100, "Test"}
+        {"Certain A", 100, 1, 1, "Test"}, {"Certain B", 100, 1, 1, "Test"},
+        {"Always fail", 0, 100, 100, "Test"}
     }, {GoalType::ConsecutiveSpark, 2}, npc);
     expect(result.order[0].name != "Always fail" && result.order[1].name != "Always fail",
         "ordering places two guaranteed sparks consecutively");
@@ -68,7 +68,7 @@ void testConsecutiveOrderMatters() {
 
 void testFavorDistribution() {
     const Npc npc{100.0, 10, 1};
-    const auto result = AmitySolver::solveExact({{"Range", 100.0, 10, 12, "Test"}},
+    const auto result = AmitySolver::solveExact({{"Range", 100, 10, 12, "Test"}},
         {GoalType::AccumulatedFavor, 2}, npc);
     expectNear(result.satisfactionProbability, 1.0 / 3.0,
         "goal probability evaluates every favor-range outcome");
@@ -78,8 +78,8 @@ void testFavorDistribution() {
 void testRewardAndBranchBound() {
     const Npc npc{100.0, 0, 2};
     const auto result = AmitySolver::solveExact({
-        {"One", 100.0, 1, 1, "Test"}, {"Ten", 100.0, 10, 10, "Test"},
-        {"Five", 100.0, 5, 5, "Test"}
+        {"One", 100, 1, 1, "Test"}, {"Ten", 100, 10, 10, "Test"},
+        {"Five", 100, 5, 5, "Test"}
     }, {GoalType::FreeTalk, 0}, npc);
     expect(result.order.size() == 2, "selection respects conversation slots");
     expectNear(result.expectedAccumulatedFavor, 15.0, "best reward selection is exact");
