@@ -23,7 +23,7 @@ Combo effects are not supported yet.
   --interest 30 \
   --favor 15 \
   --slots 8 \
-  --category "Velia Residents" \
+  --category "Residents of Velia" \
   --goal consecutive-spark \
   --target 3
 ```

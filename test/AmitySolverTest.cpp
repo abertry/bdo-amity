@@ -90,10 +90,10 @@ void testJsonKnowledgeBase() {
     const auto& all = KnowledgeBase::all();
     expect(all.size() == 26, "all JSON knowledge records load");
     const auto igor = KnowledgeBase::get("Igor Bartali");
-    expect(igor && igor->favorMin == 45 && igor->category == "Velia Residents",
+    expect(igor && igor->favorMin == 45 && igor->category == "Residents of Velia",
         "canonical categorized entry comes from JSON");
-    expect(KnowledgeBase::selectCategory("Velia Residents").size() == 14,
-        "Velia Residents category contains all expected entries");
+    expect(KnowledgeBase::selectCategory("Residents of Velia").size() == 14,
+        "Residents of Velia category contains all expected entries");
     expect(KnowledgeBase::categories().size() == 2, "available categories are listed");
 
     const std::string path = "invalid-knowledge-test.json";
@@ -120,11 +120,11 @@ void testValidationAndEmptyInput() {
 
 void testCommandLineParsing() {
     const char* arguments[]{"solver", "--interest", "30", "--favor", "15", "--slots", "8",
-        "--category", "Velia Residents", "--goal", "consecutive-spark", "--target", "3"};
+        "--category", "Residents of Velia", "--goal", "consecutive-spark", "--target", "3"};
     const auto options = parseCommandLine(13, arguments);
     expect(options.npc.interest == 30.0 && options.npc.favor == 15 && options.npc.slots == 8,
         "NPC command-line values are parsed");
-    expect(options.category == "Velia Residents", "category command-line value is parsed");
+    expect(options.category == "Residents of Velia", "category command-line value is parsed");
     expect(options.goal.type == GoalType::ConsecutiveSpark && options.goal.target == 3,
         "goal command-line values are parsed");
 
